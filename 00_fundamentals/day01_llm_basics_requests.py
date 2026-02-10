@@ -36,5 +36,9 @@ response = requests.post(
 # Convert response to JSON
 response_json = response.json()
 
+# Raise exception if there are any errors
+if response.status_code != 200:
+    raise Exception(response_json)
+
 print(response_json)
 print(response_json["choices"][0]["message"]["content"])
